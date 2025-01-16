@@ -1,0 +1,17 @@
+version:  2
+
+sources:
+  - name:  stripe
+    database: TALAN_ODS
+    schema: DBT_WBASTARD
+    freshness: 
+        error_after:
+          count: 200
+          period: hour
+        warn_after:
+          count: 136
+          period: minute
+    loaded_at_field: _batched_at
+    tables:
+    - name:  payment
+      identifier: stripe_payment
