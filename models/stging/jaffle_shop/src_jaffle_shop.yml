@@ -15,10 +15,20 @@ sources:
     tables:
     - name:  orders
       identifier: jaffle_shop_orders
+      columns:
+        - name: id
+          tests:
+            - unique
+            - not_null            
+             
      
 
     - name:  customers
       identifier: jaffle_shop_customers
       freshness:
         null
-
+      columns:
+        - name: id
+          tests:
+            - unique
+            - not_null  
