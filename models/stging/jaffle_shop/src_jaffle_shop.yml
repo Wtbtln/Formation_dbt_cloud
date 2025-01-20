@@ -1,0 +1,38 @@
+version:  2
+
+sources:
+  - name:  jaffle_shop
+    description: a clonne of a postgres application database
+    database: TALAN_ODS
+    schema: DBT_WBASTARD
+    freshness: 
+        error_after:
+          count: 200
+          period: hour
+        warn_after:
+          count: 190
+          period: hour
+    loaded_at_field: _etl_loaded_at
+    tables:
+    - name:  orders
+      description: raw orders data
+      identifier: jaffle_shop_orders
+      columns:
+        - name: id
+          tests:
+            - unique
+            - not_null            
+             
+     
+
+    - name:  customers
+      description: raw customers data
+      identifier: jaffle_shop_customers
+      freshness:
+        null
+      columns:
+        - name: id
+          description: primary key of customer data
+          tests:
+            - unique
+            - not_null  
