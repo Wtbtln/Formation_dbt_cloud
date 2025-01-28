@@ -4,3 +4,4 @@ select
     order_date,
     status
 from {{ source('jaffle_shop', 'orders') }}
+{{ limit_date_dev('order_date',3000)}}
